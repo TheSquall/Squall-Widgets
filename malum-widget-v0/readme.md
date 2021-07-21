@@ -1,107 +1,26 @@
-# Welcome to Phasmophobia Evidence V3.0
+# Welcome to the Malum BETA Widget version 0.1.0
 
-I made this widget for anyone who uses StreamElements that plays Phasmophobia. To see how the widget works, please click the video below:
+I made this widget for anyone who uses StreamElements that plays Malum.
+This widget was created as a fork of GlitchedMythos's Phasmophobia Widget V3.0, which can be found [at this link](https://github.com/GlitchedMythos/se-widgets/tree/main/phasmophobia_evidence_v3).
 
-[![Video showing how to use and edit the widget](http://img.youtube.com/vi/stYhlKtzIv0/0.jpg)](https://youtu.be/stYhlKtzIv0)
+An installation and usage YouTube video will be generated as this Widget goes to release.
+
+# Please Do Not share This Widget URL with ANYONE until Ready for Release. This Widget is being provided as a closed beta to specific users of the Twitch and Malum community.
 
 # Example Commands
 
 | Name | Command | Action |
 |--|--|--|
-| Name Reset | !gr | Reset the ghost |
-| Name Reset| !gr "name" | Reset the ghost with the name |
-| Name Input | !gn "name" | Change name to "name" |
-| Name Input<br />(Stream Deck) | !gfn "name"<br />!gsn "name" | Change either first or last name to "name" |
-| Map Input | !gm "map" | Set the map name. Replace with a command from the map list below |
-| Difficulty Input | !gd "difficulty" | Set the map name. Replace with a command from the map list below |
-| Toggle Bone | !boner | Change Bone to opposite of current state |
-| Toggle Ouija | !ouija | Change Ouija to opposite of current state |
-| Toggle EMF | !ge | Change EMF to opposite of current state |
-| Toggle Spirit Box | !gs | Change Spirit Box to opposite of current state |
-| Toggle Fingerprints | !gf | Change Fingerprints to opposite of current state |
-| Toggle Orbs | !go | Change Ghost Orbs to opposite of current state |
-| Toggle Ghost Writing | !gw | Change Ghost Writing to opposite of current state |
-| Toggle Freezing Temps | !gt | Change Freezing Temps to opposite of current state |
-| Optional Objectives | !oo "a" "b" "c"<br />!oo "a" | Set the optional objectives. Replace a, b or c with the objective you'd like below |
-| Toggle Optional Objective 1 | !o1 | Toggles Optional Objective 1 from being marked or not |
-| Toggle Optional Objective 2 | !o2 | Toggles Optional Objective 2 from being marked or not |
-| Toggle Optional Objective 3 | !o3 | Toggles Optional Objective 3 from being marked or not |
-| Set Counter Name | !setcounter "phrase" | Set's the phrase before the number in the counter |
-| Set Counter Number | !setcounternumber "num" | Set's the number in the counter to the number input |
-| Increment the counter by 1 | !counterup | Adds one to the counter number |
-| Decrement the counter by 1 | !counterdown | Subtracts one from the counter number |
-
-# Optional Objectives
-
-| Objective | Possible Phrases |
-|--|--|
-| Motion Sensor | "mo" "motion" |
-| Salt | "sa" "salt" |
-| Photo | "ph" "photo" |
-| Event | "ev" "event" |
-| EMF | "em" "emf" |
-| Crucifix | "cr" "crucifix" |
-| Smudge Ghost (NON-Hunt) | "sm" "smudge" |
-| Escape | "es" "escape" |
-| Smudge Ghost (During Hunt) | "hu" "hunt" |
-| Repel Ghost (During Hunt) - smudge during hunt | "re" "repel" |
-| <25% Sanity | "san "sanity" |
-| Candle | "ca" "candle" |
-
-## Example Usage:
-
-To get `Salt Photo Event`
-
-    !oo sa ph ev
-
-To get `Crucifix Motion Salt`
-
-    !oo cr motion sa
-
-Individual Objectives can be used and can be toggled on and off
-
-To get `Smudge`
-
-    !oo sm
-
-# Map Names and Difficulties
-
-| Map | Possible Phrases |
-|--|--|
-| Tanglewood | "ta" "tangle" "tanglewood" |
-| Edgefield | "ed" "edge" "edgefield" |
-| Ridgeview | "ri" "ridge" "ridgeview" |
-| Grafton | "gr" "grafton" |
-| Bleasdale | "bl" "bleasdale" |
-| High School | "hi" "hs" "high" "school" "brown" "brownstone" |
-| Prison | "pr" "prison" |
-| Asylum | "as" "asylum" |
-
-| Difficulty | Possible Phrases |
-|--|--|
-| Amateur | "a" "am" "amateur" |
-| Intermediate | "i" "int" "intermediate" |
-| Professional | "p" "pro" "professional" |
-
-## Example Usage:
-
-To get `Grafton Farmhouse`
-
-    !gm gr
-
-To get `Brownstone High School`
-
-    !gm school
-
-To get `Professional` Difficulty
-
-    !gd pro
-
-Both Map and Difficulty can be combined in one map command
-
-To get `Asylum Intermediate`
-
-    !gm as i
+| Widget Reset | !mr | Reset the Widget |
+| Toggle 4 Symbol | !g4 | Toggle the Symbol that looks like a 4 |
+| Toggle 8 Symbol | !gs | Toggle the Symbol that looks like an 8 |
+| Toggle Lobster Symbol | !gf | Toggle the Symbol that looks like a Lobster |
+| Toggle Scale Symbol | !go | Toggle the Symbol that looks like a Scale |
+| Toggle Dancer Symbol | !gw | Toggle the Symbol that looks like a Dancer |
+| Set Counter Name | !setcounter "phrase" | Sets the Counter Phrase |
+| Set Counter Number | !setcounternumber "num" | Sets the Counter's Number to a Specific Value |
+| Increment the counter by 1 | !counterup | Adds one to the Counter |
+| Decrement the counter by 1 | !counterdown | Subtracts one from the Counter |
 
 # How to Add to StreamElements?!?
 
@@ -119,4 +38,4 @@ js -> js
 
 json -> fields
 
-data -> Input just -> { }
+data -> input just -> { }
