@@ -17,10 +17,10 @@ An installation and usage YouTube video will be generated as this Widget goes to
 | Toggle Lobster Symbol | !gf | Toggle the Symbol that looks like a Lobster |
 | Toggle Scale Symbol | !go | Toggle the Symbol that looks like a Scale |
 | Toggle Dancer Symbol | !gw | Toggle the Symbol that looks like a Dancer |
-| Set Counter Name | !setcounter "phrase" | Sets the Counter Phrase |
-| Set Counter Number | !setcounternumber "num" | Sets the Counter's Number to a Specific Value |
-| Increment the counter by 1 | !counterup | Adds one to the Counter |
-| Decrement the counter by 1 | !counterdown | Subtracts one from the Counter |
+| Set Counter Name | !setcounter1 "phrase"<br>!setcounter2 "phrase" | Sets the Counter Phrase |
+| Set Counter Number | !setcounter1number "num"<br>!setcounter2number "num" | Sets the Counter's Number to a Specific Value |
+| Increment the counter by 1 | !counter1up<br>!counter2up | Adds one to the Counter |
+| Decrement the counter by 1 | !counter1down<br>!counter2down | Subtracts one from the Counter |
 | Toggle VIP Users ON | !vipon | Allow Channel VIPs to use Commands |
 | Toggle VIP Users OFF | !vipoff | Disallow Channel VIPs to use Commands |
 
