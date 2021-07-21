@@ -21,6 +21,8 @@ An installation and usage YouTube video will be generated as this Widget goes to
 | Set Counter Number | !setcounternumber "num" | Sets the Counter's Number to a Specific Value |
 | Increment the counter by 1 | !counterup | Adds one to the Counter |
 | Decrement the counter by 1 | !counterdown | Subtracts one from the Counter |
+| Toggle VIP Users ON | !vipon | Allow Channel VIPs to use Commands |
+| Toggle VIP Users OFF | !vipoff | Disallow Channel VIPs to use Commands |
 
 # How to Add to StreamElements?!?
 
