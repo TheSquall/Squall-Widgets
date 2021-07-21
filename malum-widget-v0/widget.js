@@ -116,7 +116,8 @@ const modOrVIPPermission = (configuration) => {
 let userState = {
   channelName: "",
   conclusionString: "",
-  counter: 0,
+  counter1: 0,
+  counter2: 0,
   evidence: {
     symbol4: EVIDENCE_OFF,
     symbol8: EVIDENCE_OFF,
@@ -196,22 +197,48 @@ window.addEventListener("onWidgetLoad", function (obj) {
         false,
       ]);
     },
-    [fieldData["setCounterNameCommand"]]: (data) => { // Set Widget Counter Name
+    [fieldData["setCounter1NameCommand"]]: (data) => { // Set Widget Counter Name
       runCommandWithPermission(modOrVIPPermission(config), data, _setCounterName, [
+        1,
         data.text,
       ]);
     },
-    [fieldData["setCounterNumberCommand"]]: (data) => { // Set Widget Counter Number
+    [fieldData["setCounter1NumberCommand"]]: (data) => { // Set Widget Counter Number
       runCommandWithPermission(modOrVIPPermission(config), data, _setCounterNumber, [
+        1,
         data.text,
       ]);
     },
-    [fieldData["incrementCounterCommand"]]: (data) => { // Increment Counter by 1
+    [fieldData["incrementCounter1Command"]]: (data) => { // Increment Counter by 1
       runCommandWithPermission(modOrVIPPermission(config), data, _incrementCounter, [
+      1,
       ]);
     },
-    [fieldData["decrementCounterCommand"]]: (data) => { // Decrement Counter by 1
+    [fieldData["decrementCounter1Command"]]: (data) => { // Decrement Counter by 1
       runCommandWithPermission(modOrVIPPermission(config), data, _decrementCounter, [
+      1,
+      ]);
+    },
+    [fieldData["setCounter2NameCommand"]]: (data) => { // Set Widget Counter Name
+      runCommandWithPermission(modOrVIPPermission(config), data, _setCounterName, [
+        2,
+        data.text,
+      ]);
+    },
+    [fieldData["setCounter2NumberCommand"]]: (data) => { // Set Widget Counter Number
+      runCommandWithPermission(modOrVIPPermission(config), data, _setCounterNumber, [
+        2,
+        data.text,
+      ]);
+    },
+    [fieldData["incrementCounter2Command"]]: (data) => { // Increment Counter by 1
+      runCommandWithPermission(modOrVIPPermission(config), data, _incrementCounter, [
+      2,
+      ]);
+    },
+    [fieldData["decrementCounter2Command"]]: (data) => { // Decrement Counter by 1
+      runCommandWithPermission(modOrVIPPermission(config), data, _decrementCounter, [
+      2,
       ]);
     },
     "!thesquall": (data) => { // :-)
@@ -306,6 +333,7 @@ window.addEventListener("onWidgetLoad", function (obj) {
     title: fieldData["displayTitle"] === "yes" ? true : false,
     evidence: fieldData["displayEvidence"] === "yes" ? true : false,
     counter: fieldData["displayCounter"] === "yes" ? true : false,
+    counter2: fieldData["displayCounter2"] === "yes" ? true : false,
     conclusion: fieldData["displayConclusion"] === "yes" ? true : false,
     solution: fieldData["displaySolution"] === "yes" ? true : false,
     solutionAlways: fieldData["showSolutionAlways"] === "yes" ? true : false,
@@ -410,22 +438,22 @@ const _toggleVIPAccessibility = (canUseVIP) => {
   toggleVIPAccessibility(canUseVIP);
 };
 
-const _setCounterName = (command) => {
+const _setCounterName = (num, command) => {
   commandArgument = command.split(" ").slice(1).join(" ");
-  setCounterName(commandArgument);
+  setCounterName(num, commandArgument);
 };
 
-const _setCounterNumber = (command) => {
+const _setCounterNumber = (num, command) => {
   commandArgument = command.split(" ").slice(1).join(" ");
-  setCounterNumber(commandArgument);
+  setCounterNumber(num, commandArgument);
 };
 
-const _incrementCounter = () => {
-  incrementCounter();
+const _incrementCounter = (num) => {
+  incrementCounter(num);
 };
 
-const _decrementCounter = () => {
-  decrementCounter();
+const _decrementCounter = (num) => {
+  decrementCounter(num);
 };
 
 const _theSquall = (command) => {
@@ -435,7 +463,7 @@ const _theSquall = (command) => {
     writeOutVersion(commandArgument);
   } else {
     writeOutVersion(
-      `Hello The__Squall!!! Thank you for creating me. I am version ${version} of your widget. I think everyone should check you out at twitch.tv/glitchedmythos. Also ${userState.channelName} is absolutely AMAZING! BAWK BAWK!`
+      `Hello The__Squall!!! Thank you for creating me. I am version ${version} of your widget. I think everyone should check you out at twitch.tv/the__squall. Thanks GlitchedMythos for your Widget Code! Also ${userState.channelName} is absolutely AMAZING! BAWK BAWK!`
     );
   }
 };
@@ -455,8 +483,14 @@ const displayItems = (config) => {
     if (!config.evidence) { // Evidence Only
       $(`#evidence-container`).addClass("hidden");
     }
-    if (!config.counter) { // Counter Only
+    if (!config.counter) { // Counters Only
       $(`#counter-container`).addClass("hidden");
+    }
+    if (!config.counter2) { // Counter 2 Only
+      $(`#counter2-name`).addClass("hidden");
+      $(`#counter2-number`).addClass("hidden");
+    } else {
+      $(`#counter2-name`).html(". "+$(`#counter2-name`).text());
     }
   }
   if (!config.conclusion && !config.solution) { // Conclusion + Ritual
@@ -814,25 +848,43 @@ const updateConclusion = (conclusion) => {
 };
 
 /** COUNTER RELATED DOM MANIPULATING FUNCTIONS */
-const setCounterName = (name) => {
-  $("#counter-name").html(name);
-};
-
-const setCounterNumber = (number) => {
-  let num = parseInt(number);
-
-  if (Number.isInteger(num)) {
-    $("#counter-number").text("" + num);
+const setCounterName = (which, name) => {
+  if (which === 1) {
+    $("#counter1-name").html(name);
+  } else if (which === 2) {
+    $("#counter2-name").html(". "+name);
   }
 };
 
-const incrementCounter = (num) => {
-  let counter = $("#counter-number");
+const setCounterNumber = (which, number) => {
+  let num = parseInt(number);
+
+  if (Number.isInteger(num)) {
+    if (which === 1) {
+      $("#counter1-number").text("" + num);
+    } else if (which === 2) {
+      $("#counter2-number").text("" + num);
+    }
+  }
+};
+
+const incrementCounter = (which, num) => {
+  let counter;
+  if (which === 1) {
+    counter = $("#counter1-number");
+  } else if (which === 2) {
+    counter = $("#counter2-number");
+  }
   counter.text(parseInt(counter.text()) + (num ? num : 1));
 };
 
-const decrementCounter = (num) => {
-  let counter = $("#counter-number");
+const decrementCounter = (which, num) => {
+  let counter;
+  if (which === 1) {
+    counter = $("#counter1-number");
+  } else if (which === 2) {
+    counter = $("#counter2-number");
+  }
   counter.text(parseInt(counter.text()) - (num ? num : 1));
 };
 
