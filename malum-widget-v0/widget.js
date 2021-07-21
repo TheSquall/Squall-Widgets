@@ -313,7 +313,7 @@ window.addEventListener("onWidgetLoad", function (obj) {
   config.conclusionStrings = {
     zeroEvidenceConclusionString: fieldData["zeroEvidenceConclusionString"]
       ? fieldData["zeroEvidenceConclusionString"]
-      : "Waiting for Symbols",
+      : "Waiting for Symbols...",
     oneEvidenceConclusionString: fieldData["oneEvidenceConclusionString"]
       ? fieldData["oneEvidenceConclusionString"]
       : "Not Sure Yet...",
