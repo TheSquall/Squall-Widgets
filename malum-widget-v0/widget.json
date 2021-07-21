@@ -1,0 +1,546 @@
+{
+  "resetCommand": {
+    "type": "string",
+    "label": "Widget Reset Command",
+    "value": "!mr",
+    "group": "Commands"
+  },
+  "4Command": {
+    "type": "string",
+    "label": "Symbol '4' Toggle Command",
+    "value": "!m4",
+    "group": "Commands"
+  },
+  "8Command": {
+    "type": "string",
+    "label": "Symbol '8' Toggle Command",
+    "value": "!m8",
+    "group": "Commands"
+  },
+  "lobsterCommand": {
+    "type": "string",
+    "label": "Symbol 'Lobster' Toggle Command",
+    "value": "!ml",
+    "group": "Commands"
+  },
+  "scaleCommand": {
+    "type": "string",
+    "label": "Symbol 'Scale' Toggle Command",
+    "value": "!ms",
+    "group": "Commands"
+  },
+  "dancerCommand": {
+    "type": "string",
+    "label": "Symbol 'Dancer' Toggle Command",
+    "value": "!md",
+    "group": "Commands"
+  },
+  "setCounterNameCommand": {
+    "type": "string",
+    "label": "Set Counter Name Command",
+    "value": "!setcounter",
+    "group": "Commands"
+  },
+  "setCounterNumberCommand": {
+    "type": "string",
+    "label": "Set Counter Number Command",
+    "value": "!setcounternumber",
+    "group": "Commands"
+  },
+  "incrementCounterCommand": {
+    "type": "string",
+    "label": "Increment Counter Command",
+    "value": "!counterup",
+    "group": "Commands"
+  },
+  "decrementCounterCommand": {
+    "type": "string",
+    "label": "Decrement Counter Command",
+    "value": "!counterdown",
+    "group": "Commands"
+  },
+  "dashboardBackgroundColor": {
+    "type": "colorpicker",
+    "label": "Widget Background Color",
+    "value": "rgba(0, 0, 0, 0.5)",
+    "group": "Widget Options"
+  },
+  "fontFamily": {
+    "type": "googleFont",
+    "label": "Widget Font",
+    "value": "Roboto",
+    "group": "Widget Options"
+  },
+  "vipToggleOnCommand": {
+    "type": "string",
+    "label": "Toggle Allowing VIPS on",
+    "value": "!vipon",
+    "group": "Widget Options"
+  },
+  "vipToggleOffCommand": {
+    "type": "string",
+    "label": "Toggle Allowing VIPS off",
+    "value": "!vipoff",
+    "group": "Widget Options"
+  },
+  "allowVIPS": {
+    "type": "dropdown",
+    "label": "Allow VIPS to use commands",
+    "value": "no",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Widget Options"
+  },
+  "displayTitle": {
+    "type": "dropdown",
+    "label": "Display Title",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Title Options"
+  },
+  "titleColor": {
+    "type": "colorpicker",
+    "label": "Title Color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Title Options"
+  },
+  "titleFontSize": {
+    "type": "number",
+    "label": "Title Font Size (px)",
+    "value": 24,
+    "step": 1,
+    "group": "Title Options"
+  },
+  "titleString": {
+    "type": "text",
+    "label": "Title Text",
+    "value": "Malum Ritual Tracker",
+    "group": "Title Options"
+  },
+  "displayEvidence": {
+    "type": "dropdown",
+    "label": "Display Symbols",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Symbol Options"
+  },
+  "evidenceActive": {
+    "type": "colorpicker",
+    "label": "Active Symbols",
+    "value": "rgba(50,205,50 ,1 )",
+    "group": "Symbol Options"
+  },
+  "evidenceInactive": {
+    "type": "colorpicker",
+    "label": "Inactive Symbols",
+    "value": "rgb(255, 255, 255)",
+    "group": "Symbol Options"
+  },
+  "markImpossibleEvidence": {
+    "type": "dropdown",
+    "label": "Mark Impossible Symbols",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Symbol Options"
+  },
+  "evidenceImpossible": {
+    "type": "colorpicker",
+    "label": "Impossible Symbols",
+    "value": "rgba(234, 66, 29, 0.6)",
+    "group": "Symbol Options"
+  },
+  "useEvidenceImpossibleCompleted": {
+    "type": "dropdown",
+    "label": "Different Impossible Complete Color?",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Symbol Options"
+  },
+  "evidenceImpossibleCompleted": {
+    "type": "colorpicker",
+    "label": "Complete Impossible Symbols",
+    "value": "rgba(28, 69, 233, 0.3)",
+    "group": "Symbol Options"
+  },
+  "evidencePixelSize": {
+    "type": "number",
+    "label": "Symbol Size (px)",
+    "value": 50,
+    "step": 1,
+    "group": "Symbol Options"
+  },
+  "evidenceMarginSize": {
+    "type": "number",
+    "label": "Symbol Horizontal Margin Size (px)",
+    "value": 5,
+    "step": 1,
+    "group": "Symbol Options"
+  },
+  "displayCounter": {
+    "type": "dropdown",
+    "label": "Display Counter",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Counter Options"
+  },
+  "counterFontColor": {
+    "type": "colorpicker",
+    "label": "Counter Color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Counter Options"
+  },
+  "counterFontSize": {
+    "type": "number",
+    "label": "Counter Font Size (px)",
+    "value": 24,
+    "step": 1,
+    "group": "Counter Options"
+  },
+  "counterDefaultString": {
+    "type": "text",
+    "label": "Counter Default Name",
+    "value": "Wipes:",
+    "group": "Counter Options"
+  },
+  "displayConclusion": {
+    "type": "dropdown",
+    "label": "Display Conclusion",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Conclusion + Ritual Options"
+  },
+  "conclusionColor": {
+    "type": "colorpicker",
+    "label": "Conclusion Color",
+    "value": "rgb(60, 251, 57)",
+    "group": "Conclusion + Ritual Options"
+  },
+  "conclusionFontSize": {
+    "type": "number",
+    "label": "Conclusion Font Size (px)",
+    "value": 16,
+    "step": 1,
+    "group": "Conclusion + Ritual Options"
+  },
+  "displaySolution": {
+    "type": "dropdown",
+    "label": "Display Summoning Ritual",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Conclusion + Ritual Options"
+  },
+  "showSolutionAlways": {
+    "type": "dropdown",
+    "label": "Always Show Ritual",
+    "value": "no",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Conclusion + Ritual Options"
+  },
+  "solutionColor": {
+    "type": "colorpicker",
+    "label": "Ritual Items Color",
+    "value": "rgb(255, 0, 0)",
+    "group": "Conclusion + Ritual Options"
+  },
+  "solutionFontSize": {
+    "type": "number",
+    "label": "Ritual Items Font Size (px)",
+    "value": 16,
+    "step": 1,
+    "group": "Conclusion + Ritual Options"
+  },
+  "summonCircleSize": {
+    "type": "number",
+    "label": "Summoning Circle Size (px)",
+    "value": 200,
+    "step": 1,
+    "group": "Conclusion + Ritual Options"
+  },
+  "testSummon": {
+    "type": "button",
+    "label": "Test Summoning Ritual Text",
+    "value": "",
+    "group": "Ritual Fine Tuning Options"
+  },
+  "ritual1ExtraSpace": {
+    "type": "number",
+    "label": "Top Ritual Extra Spacing (px)",
+    "value": 10,
+    "step": 1,
+    "group": "Ritual Fine Tuning Options"
+  },
+  "ritual2ExtraSpace": {
+    "type": "number",
+    "label": "Top Left Ritual Extra Spacing (px)",
+    "value": 30,
+    "step": 1,
+    "group": "Ritual Fine Tuning Options"
+  },
+  "ritual2Rotation": {
+    "type": "number",
+    "label": "Top Left Ritual Rotation (deg)",
+    "value": -75,
+    "min": -90,
+    "max": -60,
+    "step": 0.5,
+    "group": "Ritual Fine Tuning Options"
+  },
+  "ritual3ExtraSpace": {
+    "type": "number",
+    "label": "Top Right Ritual Extra Spacing (px)",
+    "value": 30,
+    "step": 1,
+    "group": "Ritual Fine Tuning Options"
+  },
+  "ritual3Rotation": {
+    "type": "number",
+    "label": "Top Right Ritual Rotation (deg)",
+    "value": 75,
+    "min": 60,
+    "max": 90,
+    "step": 0.5,
+    "group": "Ritual Fine Tuning Options"
+  },
+  "ritual4ExtraSpace": {
+    "type": "number",
+    "label": "Bottom Left Ritual Extra Spacing (px)",
+    "value": 25,
+    "step": 1,
+    "group": "Ritual Fine Tuning Options"
+  },
+  "ritual4Rotation": {
+    "type": "number",
+    "label": "Bottom Left Ritual Rotation (deg)",
+    "value": -135,
+    "min": -150,
+    "max": -120,
+    "step": 0.5,
+    "group": "Ritual Fine Tuning Options"
+  },
+  "ritual5ExtraSpace": {
+    "type": "number",
+    "label": "Bottom Right Ritual Extra Spacing(px)",
+    "value": 25,
+    "step": 1,
+    "group": "Ritual Fine Tuning Options"
+  },
+  "ritual5Rotation": {
+    "type": "number",
+    "label": "Bottom Left Ritual Rotation (deg)",
+    "value": 135,
+    "min": 120,
+    "max": 150,
+    "step": 0.5,
+    "group": "Ritual Fine Tuning Options"
+  },
+  "zeroEvidenceConclusionString": {
+    "type": "text",
+    "label": "Zero Symbols",
+    "value": "",
+    "group": "Conclusion Messages - Empty For Default"
+  },
+  "oneEvidenceConclusionString": {
+    "type": "text",
+    "label": "One Symbol",
+    "value": "",
+    "group": "Conclusion Messages - Empty For Default"
+  },
+  "impossibleConclusionString": {
+    "type": "text",
+    "label": "Too Many Symbols",
+    "value": "",
+    "group": "Conclusion Messages - Empty For Default"
+  },
+  "fireSwordString": {
+    "type": "text",
+    "label": "Fire Sword",
+    "value": "",
+    "group": "Conclusion Messages - Empty For Default"
+  },
+  "iceAxeString": {
+    "type": "text",
+    "label": "Ice Axe",
+    "value": "",
+    "group": "Conclusion Messages - Empty For Default"
+  },
+  "frostWhipString": {
+    "type": "text",
+    "label": "Frost Whip",
+    "value": "",
+    "group": "Conclusion Messages - Empty For Default"
+  },
+  "giantMaceString": {
+    "type": "text",
+    "label": "Giant Mace",
+    "value": "",
+    "group": "Conclusion Messages - Empty For Default"
+  },
+  "bonkingStickString": {
+    "type": "text",
+    "label": "Bonking Stick",
+    "value": "",
+    "group": "Conclusion Messages - Empty For Default"
+  },
+  "clobberHammerString": {
+    "type": "text",
+    "label": "Clobber Hammer",
+    "value": "",
+    "group": "Conclusion Messages - Empty For Default"
+  },
+  "longFingerString": {
+    "type": "text",
+    "label": "Long Finger",
+    "value": "",
+    "group": "Conclusion Messages - Empty For Default"
+  },
+  "flowersString": {
+    "type": "text",
+    "label": "Flowers",
+    "value": "",
+    "group": "Conclusion Messages - Empty For Default"
+  },
+  "borderColor": {
+    "type": "colorpicker",
+    "label": "Border Color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Theming - Border"
+  },
+  "borderType": {
+    "type": "dropdown",
+    "label": "Border Type",
+    "value": "solid",
+    "options": {
+      "solid": "Solid Border",
+      "dashed": "Dashed Border",
+      "dotted": "Dotted Border",
+      "double": "Double Border",
+      "none": "No Border"
+    },
+    "group": "Theming - Border"
+  },
+  "borderWidth": {
+    "type": "number",
+    "label": "Border Width",
+    "value": 4,
+    "step": 1,
+    "group": "Theming - Border"
+  },
+  "borderRadius": {
+    "type": "number",
+    "label": "Border Radius",
+    "value": 30,
+    "step": 1,
+    "group": "Theming - Border"
+  },
+  "useGradientBorder": {
+    "type": "dropdown",
+    "label": "Use Gradient Border?",
+    "value": "no",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Theming - Gradient Border"
+  },
+  "useAnimatedBorder": {
+    "type": "dropdown",
+    "label": "Animate Border?",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Theming - Gradient Border"
+  },
+  "animationDuration": {
+    "type": "slider",
+    "label": "Animate Duration (sec)",
+    "value": 4,
+    "min": 1,
+    "max": 10,
+    "step": 0.5,
+    "group": "Theming - Gradient Border"
+  },
+  "animatedBorderColor": {
+    "type": "colorpicker",
+    "label": "Border Color One",
+    "value": "rgb(255, 255, 255)",
+    "group": "Theming - Gradient Border"
+  },
+  "animatedBorderColorTwo": {
+    "type": "colorpicker",
+    "label": "Border Color Two",
+    "value": "rgb(248, 203, 248)",
+    "group": "Theming - Gradient Border"
+  },
+  "animatedBorderColorThree": {
+    "type": "colorpicker",
+    "label": "Border Color Three",
+    "value": "rgb(255, 0, 255)",
+    "group": "Theming - Gradient Border"
+  },
+  "animatedBorderAngle": {
+    "type": "number",
+    "label": "Border Angle",
+    "value": 0,
+    "step": 1,
+    "group": "Theming - Gradient Border"
+  },
+  "dividerColor": {
+    "type": "colorpicker",
+    "label": "Divider Color",
+    "value": "rgba(255, 255, 255, 1)",
+    "group": "Theming - Divider"
+  },
+  "dividerType": {
+    "type": "dropdown",
+    "label": "Divider Type",
+    "value": "divide-dashed",
+    "options": {
+      "divide-solid": "Solid Divider",
+      "divide-dashed": "Dashed Divider",
+      "divide-dotted": "Dotted Divider",
+      "divide-double": "Double Divider",
+      "divide-none": "No Divider"
+    },
+    "group": "Theming - Divider"
+  },
+  "dividerWidth": {
+    "type": "dropdown",
+    "label": "Divider Width",
+    "value": "divide-y",
+    "options": {
+      "divide-y": "1px",
+      "divide-y-2": "2px",
+      "divide-y-4": "4px",
+      "divide-y-8": "8px"
+    },
+    "group": "Theming - Divider"
+  }
+}
