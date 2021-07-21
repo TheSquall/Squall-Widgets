@@ -35,28 +35,52 @@
     "value": "!md",
     "group": "Commands"
   },
-  "setCounterNameCommand": {
+  "setCounter1NameCommand": {
     "type": "string",
-    "label": "Set Counter Name Command",
-    "value": "!setcounter",
+    "label": "Set Counter 1 Name Command",
+    "value": "!setcounter1",
     "group": "Commands"
   },
-  "setCounterNumberCommand": {
+  "setCounter1NumberCommand": {
     "type": "string",
-    "label": "Set Counter Number Command",
-    "value": "!setcounternumber",
+    "label": "Set Counter 1 Number Command",
+    "value": "!setcounter1number",
     "group": "Commands"
   },
-  "incrementCounterCommand": {
+  "incrementCounter1Command": {
     "type": "string",
-    "label": "Increment Counter Command",
-    "value": "!counterup",
+    "label": "Increment Counter 1 Command",
+    "value": "!counter1up",
     "group": "Commands"
   },
-  "decrementCounterCommand": {
+  "decrementCounter1Command": {
     "type": "string",
-    "label": "Decrement Counter Command",
-    "value": "!counterdown",
+    "label": "Decrement Counter 1 Command",
+    "value": "!counter1down",
+    "group": "Commands"
+  },
+  "setCounter2NameCommand": {
+    "type": "string",
+    "label": "Set Counter 2 Name Command",
+    "value": "!setcounter2",
+    "group": "Commands"
+  },
+  "setCounter2NumberCommand": {
+    "type": "string",
+    "label": "Set Counter 2 Number Command",
+    "value": "!setcounter2number",
+    "group": "Commands"
+  },
+  "incrementCounter2Command": {
+    "type": "string",
+    "label": "Increment Counter 2 Command",
+    "value": "!counter2up",
+    "group": "Commands"
+  },
+  "decrementCounter2Command": {
+    "type": "string",
+    "label": "Decrement Counter 2 Command",
+    "value": "!counter2down",
     "group": "Commands"
   },
   "dashboardBackgroundColor": {
@@ -192,7 +216,7 @@
   },
   "displayCounter": {
     "type": "dropdown",
-    "label": "Display Counter",
+    "label": "Display Counters",
     "value": "yes",
     "options": {
       "yes": "Yes",
@@ -213,10 +237,26 @@
     "step": 1,
     "group": "Counter Options"
   },
-  "counterDefaultString": {
+  "counter1DefaultString": {
     "type": "text",
-    "label": "Counter Default Name",
-    "value": "Wipes:",
+    "label": "Counter 1 Default Name",
+    "value": "Victories:",
+    "group": "Counter Options"
+  },
+  "displayCounter2": {
+    "type": "dropdown",
+    "label": "Display Counter 2",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Counter Options"
+  },
+  "counter2DefaultString": {
+    "type": "text",
+    "label": "Counter 2 Default Name",
+    "value": ". Wipes:",
     "group": "Counter Options"
   },
   "displayConclusion": {
