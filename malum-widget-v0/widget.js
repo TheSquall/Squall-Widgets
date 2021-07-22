@@ -654,7 +654,7 @@ const determineConclusionMessage = (state) => {
   } else if (numOfDisplayTrueEvidence === 2) {
     let ritualPossibilities = getRitualPossibilities(displayEvidenceString);
     let ritualPossibilityStrings = ritualPossibilities.map((ritual) => ritual.type);
-    state.conclusionString = `Could be a ` + ritualPossibilityStrings.join(", ") + "?";
+    state.conclusionString = `Could be ` + ritualPossibilityStrings.join(", ") + " ritual?";
     toggleHiddenRitual(true, state);
   } else if (numOfDisplayTrueEvidence === 3) {
     let ritualPossibilities = getRitualPossibilities(displayEvidenceString);
