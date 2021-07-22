@@ -392,7 +392,7 @@
   },
   "ritual5Rotation": {
     "type": "number",
-    "label": "Bottom Left Ritual Rotation (deg)",
+    "label": "Bottom Right Ritual Rotation (deg)",
     "value": 135,
     "min": 120,
     "max": 150,
