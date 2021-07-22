@@ -12,11 +12,11 @@ An installation and usage YouTube video will be generated as this Widget goes to
 | Name | Command | Action |
 |--|--|--|
 | Widget Reset | !mr | Reset the Widget |
-| Toggle 4 Symbol | !g4 | Toggle the Symbol that looks like a 4 |
-| Toggle 8 Symbol | !gs | Toggle the Symbol that looks like an 8 |
-| Toggle Lobster Symbol | !gf | Toggle the Symbol that looks like a Lobster |
-| Toggle Scale Symbol | !go | Toggle the Symbol that looks like a Scale |
-| Toggle Dancer Symbol | !gw | Toggle the Symbol that looks like a Dancer |
+| Toggle 4 Symbol | !m4 | Toggle the Symbol that looks like a 4 |
+| Toggle 8 Symbol | !m8 | Toggle the Symbol that looks like an 8 |
+| Toggle Lobster Symbol | !ml | Toggle the Symbol that looks like a Lobster |
+| Toggle Scale Symbol | !ms | Toggle the Symbol that looks like a Scale |
+| Toggle Dancer Symbol | !md | Toggle the Symbol that looks like a Dancer |
 | Set Counter Name | !setcounter1 "phrase"<br>!setcounter2 "phrase" | Sets the Counter Phrase |
 | Set Counter Number | !setcounter1number "num"<br>!setcounter2number "num" | Sets the Counter's Number to a Specific Value |
 | Increment the counter by 1 | !counter1up<br>!counter2up | Adds one to the Counter |
