@@ -256,7 +256,7 @@
   "counter2DefaultString": {
     "type": "text",
     "label": "Counter 2 Default Name",
-    "value": ". Wipes:",
+    "value": "Wipes:",
     "group": "Counter Options"
   },
   "displayConclusion": {
