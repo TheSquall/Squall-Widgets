@@ -1,4 +1,4 @@
-const version = "0.1.0";
+const version = "0.2.0";
 
 /* Constants for Symbols and matching to Rituals
    Order is important here:
@@ -16,7 +16,7 @@ const FIRE_SWORD = "11100",
       FLOWERS = "00111";
 
 // Div IDs for Updating Symbols
-const EVIDENCE_NAMES_IN_DOM = [
+const EVIDENCE_NAMES = [
   "symbol4",
   "symbol8",
   "lobster",
@@ -48,18 +48,23 @@ const FIRE_SWORD_SOLN = "152403",
       LONG_FINGER_SOLN = "543012",
       FLOWERS_SOLN = "025143";
 
+// Constants for displaying evidence on the widget
+const ITEM_OFF = 0,
+  ITEM_ON = 1,
+  ITEM_IMPOSSIBLE = 2;
+
 // Constants for Ritual Item Names
-const RITUAL_ITEMS_IN_DOM = [
-  "Book",
-  "Crystal",
-  "Egg",
-  "Gold",
-  "Potion",
-  "Skull",
+const RITUAL_ITEMS = [
+  "book",
+  "crystal",
+  "egg",
+  "gold",
+  "potion",
+  "skull",
 ];
 
 // Div IDs for Displaying the Ritual Items
-const SUMMON_NAMES_IN_DOM = [
+const SUMMON_NAMES = [
   "summon-1",
   "summon-2",
   "summon-3",
@@ -132,6 +137,14 @@ let userState = {
     scale: EVIDENCE_OFF,
     dancer: EVIDENCE_OFF,
   },
+  items: {
+    book: ITEM_OFF,
+    crystal: ITEM_OFF,
+    egg: ITEM_OFF,
+    gold: ITEM_OFF,
+    potion: ITEM_OFF,
+    skull: ITEM_OFF,
+  },
   ritualItems: {
     ritualItem1: "",
     ritualItem2: "",
@@ -183,6 +196,42 @@ window.addEventListener("onWidgetLoad", function (obj) {
     },
     [fieldData["dancerCommand"]]: (data) => { // Dancer Symbol
       runCommandWithPermission(modOrVIPPermission(config), data, _toggleDancer, [
+        userState,
+        config,
+      ]);
+    },
+    [fieldData["bookCommand"]]: (data) => { // Dancer Symbol
+      runCommandWithPermission(modOrVIPPermission(config), data, _toggleBook, [
+        userState,
+        config,
+      ]);
+    },
+    [fieldData["crystalCommand"]]: (data) => { // Dancer Symbol
+      runCommandWithPermission(modOrVIPPermission(config), data, _toggleCrystal, [
+        userState,
+        config,
+      ]);
+    },
+    [fieldData["eggCommand"]]: (data) => { // Dancer Symbol
+      runCommandWithPermission(modOrVIPPermission(config), data, _toggleEgg, [
+        userState,
+        config,
+      ]);
+    },
+    [fieldData["goldCommand"]]: (data) => { // Dancer Symbol
+      runCommandWithPermission(modOrVIPPermission(config), data, _toggleGold, [
+        userState,
+        config,
+      ]);
+    },
+    [fieldData["potionCommand"]]: (data) => { // Dancer Symbol
+      runCommandWithPermission(modOrVIPPermission(config), data, _togglePotion, [
+        userState,
+        config,
+      ]);
+    },
+    [fieldData["skullCommand"]]: (data) => { // Dancer Symbol
+      runCommandWithPermission(modOrVIPPermission(config), data, _toggleSkull, [
         userState,
         config,
       ]);
@@ -334,6 +383,7 @@ window.addEventListener("onWidgetLoad", function (obj) {
     evidence: fieldData["displayEvidence"] === "yes" ? true : false,
     counter: fieldData["displayCounter"] === "yes" ? true : false,
     counter2: fieldData["displayCounter2"] === "yes" ? true : false,
+    items: fieldData["displayItems"] === "yes" ? true : false,
     conclusion: fieldData["displayConclusion"] === "yes" ? true : false,
     solution: fieldData["displaySolution"] === "yes" ? true : false,
     solutionAlways: fieldData["showSolutionAlways"] === "yes" ? true : false,
@@ -375,9 +425,9 @@ window.addEventListener("onWidgetLoad", function (obj) {
 window.addEventListener("onEventReceived", function (obj) {
   // Test for Sizing
   if (obj.detail.event.listener === "widget-button") {
-    for (let i = 0; i < SUMMON_NAMES_IN_DOM.length; i++) {
-      let ritualDom = $(`#${SUMMON_NAMES_IN_DOM[i]}`);
-      ritualDom.html(RITUAL_ITEMS_IN_DOM[1]);
+    for (let i = 0; i < SUMMON_NAMES.length; i++) {
+      let ritualDom = $(`#${SUMMON_NAMES[i]}`);
+      ritualDom.html(camelCase(RITUAL_ITEMS[1]));
     }
     $(`#conclusion-summoning`).removeClass("hidden");
   } else {
@@ -432,6 +482,30 @@ const _toggleDancer = (state, config) => {
   state.evidence.dancer = toggleEvidence(state.evidence.dancer);
   calculateRitualEvidenceDisplay(state, config);
   determineConclusionMessage(state);
+};
+
+const _toggleBook = (state, config) => {
+  state.items.book = toggleItems(state.items.book);
+};
+
+const _toggleCrystal = (state, config) => {
+  state.items.crystal = toggleItems(state.items.crystal);
+};
+
+const _toggleEgg = (state, config) => {
+  state.items.egg = toggleItems(state.items.egg);
+};
+
+const _toggleGold = (state, config) => {
+  state.items.gold = toggleItems(state.items.gold);
+};
+
+const _togglePotion = (state, config) => {
+  state.items.potion = toggleItems(state.items.potion);
+};
+
+const _toggleSkull = (state, config) => {
+  state.items.skull = toggleItems(state.items.skull);
 };
 
 const _toggleVIPAccessibility = (canUseVIP) => {
@@ -493,9 +567,12 @@ const displayItems = (config) => {
       $(`#counter2-name`).html(". "+$(`#counter2-name`).text());
     }
   }
-  if (!config.conclusion && !config.solution) { // Conclusion + Ritual
+  if (!config.conclusion && !config.solution && !config.items) { // Conclusion + Ritual + Items
     $(`#conclusion-container`).addClass("hidden");
   } else {
+    if (!config.items) { // Items Only
+      $(`#items-container`).addClass("hidden");
+    }
     if (!config.conclusion) { // Conclusion Only
       $(`#conclusion`).addClass("hidden");
     }
@@ -519,20 +596,28 @@ const resetEvidence = (evidence) => {
 
 const resetConclusion = (state) => {
   resetRitual(state);
+  resetItems(state.items);
   state.conclusionString = config.conclusionStrings.zeroEvidenceConclusionString;
   toggleHiddenRitual(true, state);
 };
 
 const resetRitual = (state) => {
-  state.ritualItems.ritualItem1 = "";
-  state.ritualItems.ritualItem2 = "";
-  state.ritualItems.ritualItem3 = "";
-  state.ritualItems.ritualItem4 = "";
-  state.ritualItems.ritualItem5 = "";
-  for (let i = 0; i < SUMMON_NAMES_IN_DOM.length; i++) {
-    let ritualDom = $(`#${SUMMON_NAMES_IN_DOM[i]}`);
+  Object.keys(state.ritualItems).forEach((key, index) => {
+    state[key] = "";
+  });
+  for (let i = 0; i < SUMMON_NAMES.length; i++) {
+    let ritualDom = $(`#${SUMMON_NAMES[i]}`);
     ritualDom.html("");
   }
+}
+
+const resetItems = (items) => {
+  items.book = ITEM_OFF;
+  items.crystal = ITEM_OFF;
+  items.egg = ITEM_OFF;
+  items.gold = ITEM_OFF;
+  items.potion = ITEM_OFF;
+  items.skull = ITEM_OFF;
 }
 
 /*******************************************************
@@ -567,9 +652,9 @@ const calculateRitualEvidenceDisplay = (state, config) => {
 
 const calculateSingleSymbolEvidence = (evidence) => {
   // Here we need to ensure there is no impossible evidence
-  for (let i = 0; i < EVIDENCE_NAMES_IN_DOM; i++) {
-    if (evidence[EVIDENCE_NAMES_IN_DOM[i]] !== EVIDENCE_ON) {
-      evidence[EVIDENCE_NAMES_IN_DOM[i]] = EVIDENCE_OFF;
+  for (let i = 0; i < EVIDENCE_NAMES; i++) {
+    if (evidence[EVIDENCE_NAMES[i]] !== EVIDENCE_ON) {
+      evidence[EVIDENCE_NAMES[i]] = EVIDENCE_OFF;
     }
   }
   return evidence;
@@ -613,12 +698,12 @@ const calculateTripleSymbolEvidence = (evidence, evidenceString, config) => {
       }
     }
   } else {
-    for (let i = 0; i < EVIDENCE_NAMES_IN_DOM.length; i++) {
+    for (let i = 0; i < EVIDENCE_NAMES.length; i++) {
       if (
-        evidence[EVIDENCE_NAMES_IN_DOM[i]] !== EVIDENCE_ON &&
+        evidence[EVIDENCE_NAMES[i]] !== EVIDENCE_ON &&
         config.useEvidenceImpossibleCompleted
       ) {
-        evidence[EVIDENCE_NAMES_IN_DOM[i]] = EVIDENCE_COMPLETE_IMPOSSIBLE;
+        evidence[EVIDENCE_NAMES[i]] = EVIDENCE_COMPLETE_IMPOSSIBLE;
       }
     }
   }
@@ -626,11 +711,11 @@ const calculateTripleSymbolEvidence = (evidence, evidenceString, config) => {
 };
 
 const calculateBadEvidence = (evidence) => {
-  for (let i = 0; i < EVIDENCE_NAMES_IN_DOM.length; i++) {
-    if (evidence[EVIDENCE_NAMES_IN_DOM[i]] === EVIDENCE_ON) {
-      evidence[EVIDENCE_NAMES_IN_DOM[i]] = EVIDENCE_IMPOSSIBLE;
+  for (let i = 0; i < EVIDENCE_NAMES.length; i++) {
+    if (evidence[EVIDENCE_NAMES[i]] === EVIDENCE_ON) {
+      evidence[EVIDENCE_NAMES[i]] = EVIDENCE_IMPOSSIBLE;
     } else {
-      evidence[EVIDENCE_NAMES_IN_DOM[i]] = EVIDENCE_OFF;
+      evidence[EVIDENCE_NAMES[i]] = EVIDENCE_OFF;
     }
   }
   return evidence;
@@ -654,7 +739,7 @@ const determineConclusionMessage = (state) => {
   } else if (numOfDisplayTrueEvidence === 2) {
     let ritualPossibilities = getRitualPossibilities(displayEvidenceString);
     let ritualPossibilityStrings = ritualPossibilities.map((ritual) => ritual.type);
-    state.conclusionString = `Could be ` + ritualPossibilityStrings.join(", ") + " ritual?";
+    state.conclusionString = `Could be ` + ritualPossibilityStrings.join(", ") + " Ritual?";
     toggleHiddenRitual(true, state);
   } else if (numOfDisplayTrueEvidence === 3) {
     let ritualPossibilities = getRitualPossibilities(displayEvidenceString);
@@ -682,6 +767,15 @@ const toggleEvidence = (evidence) => {
     evidence = EVIDENCE_OFF;
   } else {
     evidence = EVIDENCE_ON;
+  }
+  return evidence;
+};
+  
+const toggleItems = (evidence) => {
+  if (evidence === ITEM_ON) {
+    evidence = ITEM_OFF;
+  } else {
+    evidence = ITEM_ON;
   }
   return evidence;
 };
@@ -773,14 +867,45 @@ const createRitualConclusionString = (conclusionString, ritualType) => {
 };
 
 const _setRitual = (ritual, state) => {
-  for (let i = 0; i < RITUAL_ITEMS_IN_DOM.length; i++) {
+  for (let i = 0; i < RITUAL_ITEMS.length; i++) {
     let char = Number(ritual.charAt([i]));
     if (char>0) {
-      let ritualDom = $(`#${SUMMON_NAMES_IN_DOM[char-1]}`);
-      ritualDom.html(RITUAL_ITEMS_IN_DOM[i]);
+      let ritualDom = $(`#${SUMMON_NAMES[char-1]}`);
+      ritualDom.html(camelCase(RITUAL_ITEMS[i]));
+    } else if (char===0) {
+      Object.keys(userState.items).forEach((key, index) => {
+        if (key === RITUAL_ITEMS[i]) {
+          userState.items[key] = ITEM_IMPOSSIBLE;
+        }
+      });
+      updateItemsDOM(state.items);
     }
   }
 }
+
+const toggleHiddenRitual = (toggle, state) => {
+  if (toggle) {
+    state.ritualItems.ritualHidden = toggle;
+  } else {
+    state.ritualItems.ritualHidden = !state.ritualItems.ritualHidden;
+  }
+  if (config.display.solution) {
+    if (!config.display.solutionAlways) {
+      if (state.ritualItems.ritualHidden) {
+        $(`#conclusion-summoning`).addClass("hidden");
+      } else {
+        $(`#conclusion-summoning`).removeClass("hidden");
+      }
+    }
+  }
+}
+
+// Returns each first character capitalized
+const camelCase = (sentence) => {
+  return sentence.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+    letter.toUpperCase()
+  );
+};
 
 /*******************************************************
  *             DOM MANIPULATING FUNCTIONS              *
@@ -789,14 +914,15 @@ const _setRitual = (ritual, state) => {
 const updateDashboardDOM = (state) => {
   updateEvidenceDOM(state.evidenceDisplay);
   updateConclusion(state.conclusionString);
+  updateItemsDOM(state.items);
 };
 
 /** EVIDENCE RELATED DOM MANIPULATING FUNCTIONS */
 const updateEvidenceDOM = (evidence) => {
   resetEvidenceDOM();
-  for (let i = 0; i < EVIDENCE_NAMES_IN_DOM.length; i++) {
-    let evidenceDom = $(`#${EVIDENCE_NAMES_IN_DOM[i]}-svg`);
-    switch (evidence[EVIDENCE_NAMES_IN_DOM[i]]) {
+  for (let i = 0; i < EVIDENCE_NAMES.length; i++) {
+    let evidenceDom = $(`#${EVIDENCE_NAMES[i]}-svg`);
+    switch (evidence[EVIDENCE_NAMES[i]]) {
       case EVIDENCE_ON:
         evidenceDom.addClass("active");
         break;
@@ -815,8 +941,8 @@ const updateEvidenceDOM = (evidence) => {
 };
 
 const resetEvidenceDOM = () => {
-  for (let i = 0; i < EVIDENCE_NAMES_IN_DOM.length; i++) {
-    $(`#${EVIDENCE_NAMES_IN_DOM[i]}-svg`).removeClass([
+  for (let i = 0; i < EVIDENCE_NAMES.length; i++) {
+    $(`#${EVIDENCE_NAMES[i]}-svg`).removeClass([
       "active",
       "inactive",
       "impossible",
@@ -825,22 +951,35 @@ const resetEvidenceDOM = () => {
   }
 };
 
-const toggleHiddenRitual = (toggle, state) => {
-  if (toggle) {
-    state.ritualItems.ritualHidden = toggle;
-  } else {
-    state.ritualItems.ritualHidden = !state.ritualItems.ritualHidden;
-  }
-  if (config.display.solution) {
-    if (!config.display.solutionAlways) {
-      if (state.ritualItems.ritualHidden) {
-        $(`#conclusion-summoning`).addClass("hidden");
-      } else {
-        $(`#conclusion-summoning`).removeClass("hidden");
-      }
+/** ITEM RELATED DOM MANIPULATING FUNCTIONS */
+const updateItemsDOM = (items) => {
+  resetItemsDOM();
+  for (let i = 0; i < RITUAL_ITEMS.length; i++) {
+    let itemDom = $(`#${RITUAL_ITEMS[i]}-svg`);
+    switch (items[RITUAL_ITEMS[i]]) {
+      case ITEM_ON:
+        itemDom.addClass("active2");
+        break;
+      case ITEM_IMPOSSIBLE:
+        itemDom.addClass("impossible2");
+        break;
+      case ITEM_OFF:
+      default:
+        itemDom.addClass("inactive2");
+        break;
     }
   }
-}
+};
+
+const resetItemsDOM = () => {
+  for (let i = 0; i < RITUAL_ITEMS.length; i++) {
+    $(`#${RITUAL_ITEMS[i]}-svg`).removeClass([
+      "active2",
+      "inactive2",
+      "impossible2",
+    ]);
+  }
+};
 
 /** CONCLUSION RELATED DOM MANIPULATING FUNCTIONS */
 const updateConclusion = (conclusion) => {
