@@ -35,6 +35,42 @@
     "value": "!md",
     "group": "Commands"
   },
+  "bookCommand": {
+    "type": "string",
+    "label": "Item 'Book' Toggle Command",
+    "value": "!mb",
+    "group": "Commands"
+  },
+  "crystalCommand": {
+    "type": "string",
+    "label": "Item 'Crystal' Toggle Command",
+    "value": "!mc",
+    "group": "Commands"
+  },
+  "eggCommand": {
+    "type": "string",
+    "label": "Item 'Egg' Toggle Command",
+    "value": "!me",
+    "group": "Commands"
+  },
+  "goldCommand": {
+    "type": "string",
+    "label": "Item 'Gold' Toggle Command",
+    "value": "!mg",
+    "group": "Commands"
+  },
+  "potionCommand": {
+    "type": "string",
+    "label": "Item 'Potion' Toggle Command",
+    "value": "!mp",
+    "group": "Commands"
+  },
+  "skullCommand": {
+    "type": "string",
+    "label": "Item 'Skull' Toggle Command",
+    "value": "!msk",
+    "group": "Commands"
+  },
   "setCounter1NameCommand": {
     "type": "string",
     "label": "Set Counter 1 Name Command",
@@ -259,6 +295,58 @@
     "value": "Wipes:",
     "group": "Counter Options"
   },
+  "displayItems": {
+    "type": "dropdown",
+    "label": "Display Items",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Item Options"
+  },
+  "itemsActive": {
+    "type": "colorpicker",
+    "label": "Found Items",
+    "value": "rgba(50, 205, 50, 1)",
+    "group": "Item Options"
+  },
+  "itemsInactive": {
+    "type": "colorpicker",
+    "label": "Not Found Items",
+    "value": "rgba(255, 255, 255, 1)",
+    "group": "Item Options"
+  },
+  "useItemsImpossible": {
+    "type": "dropdown",
+    "label": "Color Unneeded Items?",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Item Options"
+  },
+  "itemsImpossible": {
+    "type": "colorpicker",
+    "label": "Unneeded Items after Ritual Found",
+    "value": "rgba(28, 69, 233, 0.3)",
+    "group": "Item Options"
+  },
+  "itemsPixelSize": {
+    "type": "number",
+    "label": "Item Size (px)",
+    "value": 40,
+    "step": 1,
+    "group": "Item Options"
+  },
+  "itemsMarginSize": {
+    "type": "number",
+    "label": "Item Horizontal Margin Size (px)",
+    "value": 5,
+    "step": 1,
+    "group": "Item Options"
+  },
   "displayConclusion": {
     "type": "dropdown",
     "label": "Display Conclusion",
@@ -392,7 +480,7 @@
   },
   "ritual5Rotation": {
     "type": "number",
-    "label": "Bottom Right Ritual Rotation (deg)",
+    "label": "Bottom Left Ritual Rotation (deg)",
     "value": 135,
     "min": 120,
     "max": 150,
