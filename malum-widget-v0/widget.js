@@ -741,7 +741,8 @@ const calculateBadEvidence = (evidence) => {
 
 const determineConclusionMessage = (state) => {
   _removeImpossibleItem(state);
-
+  toggleHiddenRitual(true, state);
+  
   let displayEvidenceString = createEvidenceString(state.evidenceDisplay);
   let numOfDisplayTrueEvidence = numOfTrueEvidenceInString(displayEvidenceString);
 
@@ -751,22 +752,18 @@ const determineConclusionMessage = (state) => {
   if (numOfDisplayTrueEvidence < 1 && numberOfUserTrueEvidence < 1) {
     state.conclusionString =
       config.conclusionStrings.zeroEvidenceConclusionString;
-    toggleHiddenRitual(true, state);
   } else if (numOfDisplayTrueEvidence === 1) {
     state.conclusionString =
       config.conclusionStrings.oneEvidenceConclusionString;
-    toggleHiddenRitual(true, state);
   } else if (numOfDisplayTrueEvidence === 2) {
     let ritualPossibilities = getRitualPossibilities(displayEvidenceString);
     let ritualPossibilityStrings = ritualPossibilities.map((ritual) => ritual.type);
     state.conclusionString = `Could be ` + ritualPossibilityStrings.join(", ") + " Ritual?";
-    toggleHiddenRitual(true, state);
   } else if (numOfDisplayTrueEvidence === 3) {
     let ritualPossibilities = getRitualPossibilities(displayEvidenceString);
     let ritualPossibilityStrings = ritualPossibilities.map((ritual) => ritual.type);
     if(ritualPossibilityStrings.length === 0) {
       state.conclusionString = config.conclusionStrings.tooMuchEvidence;
-      toggleHiddenRitual(true, state);
     } else {
       state.conclusionString = ritualPossibilities[0].conclusion;
       _setRitual(ritualPossibilities[0].solution,state);
@@ -774,7 +771,6 @@ const determineConclusionMessage = (state) => {
     }
   } else {
     state.conclusionString = config.conclusionStrings.tooMuchEvidence;
-    toggleHiddenRitual(true, state);
   }
 };
 
