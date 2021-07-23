@@ -17,6 +17,12 @@ An installation and usage YouTube video will be generated as this Widget goes to
 | Toggle Lobster Symbol | !ml | Toggle the Symbol that looks like a Lobster |
 | Toggle Scale Symbol | !ms | Toggle the Symbol that looks like a Scale |
 | Toggle Dancer Symbol | !md | Toggle the Symbol that looks like a Dancer |
+| Toggle Book Item | !mb | Toggle when the Book is in the Summoning Room |
+| Toggle Crystal Item | !mc | Toggle when the Crystal is in the Summoning Room |
+| Toggle Egg Item | !me | Toggle when the Egg is in the Summoning Room |
+| Toggle Gold Item | !mg | Toggle when the Gold is in the Summoning Room |
+| Toggle Potion Item | !mp | Toggle when the Potion is in the Summoning Room |
+| Toggle Skull Item | !msk | Toggle when the Skull is in the Summoning Room |
 | Set Counter Name | !setcounter1 "phrase"<br>!setcounter2 "phrase" | Sets the Counter Phrase |
 | Set Counter Number | !setcounter1number "num"<br>!setcounter2number "num" | Sets the Counter's Number to a Specific Value |
 | Increment the counter by 1 | !counter1up<br>!counter2up | Adds one to the Counter |
