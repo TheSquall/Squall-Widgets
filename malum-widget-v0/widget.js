@@ -145,6 +145,14 @@ let userState = {
     potion: ITEM_OFF,
     skull: ITEM_OFF,
   },
+  itemsDisplay: {
+    book: ITEM_OFF,
+    crystal: ITEM_OFF,
+    egg: ITEM_OFF,
+    gold: ITEM_OFF,
+    potion: ITEM_OFF,
+    skull: ITEM_OFF,
+  },
   ritualItems: {
     ritualItem1: "",
     ritualItem2: "",
@@ -452,6 +460,8 @@ const resetWidget = (state) => {
   resetEvidence(state.evidence);
   resetEvidence(state.evidenceDisplay);
   resetConclusion(state);
+  resetItems(state.items);
+  resetItems(state.itemsDisplay);
 };
 
 const _toggle4 = (state, config) => {
@@ -486,26 +496,33 @@ const _toggleDancer = (state, config) => {
 
 const _toggleBook = (state, config) => {
   state.items.book = toggleItems(state.items.book);
+  _updateItemsDisplay(state);
 };
 
 const _toggleCrystal = (state, config) => {
   state.items.crystal = toggleItems(state.items.crystal);
+  _updateItemsDisplay(state);
 };
 
 const _toggleEgg = (state, config) => {
   state.items.egg = toggleItems(state.items.egg);
+  _updateItemsDisplay(state);
 };
 
 const _toggleGold = (state, config) => {
   state.items.gold = toggleItems(state.items.gold);
+  _updateItemsDisplay(state);
 };
 
 const _togglePotion = (state, config) => {
   state.items.potion = toggleItems(state.items.potion);
+  _updateItemsDisplay(state);
 };
 
 const _toggleSkull = (state, config) => {
   state.items.skull = toggleItems(state.items.skull);
+  _updateItemsDisplay(state);
+  console.log(state);
 };
 
 const _toggleVIPAccessibility = (canUseVIP) => {
@@ -596,15 +613,16 @@ const resetEvidence = (evidence) => {
 
 const resetConclusion = (state) => {
   resetRitual(state);
-  resetItems(state.items);
   state.conclusionString = config.conclusionStrings.zeroEvidenceConclusionString;
   toggleHiddenRitual(true, state);
 };
 
 const resetRitual = (state) => {
-  Object.keys(state.ritualItems).forEach((key, index) => {
-    state[key] = "";
-  });
+  state.ritualItems.ritualItem1 = "";
+  state.ritualItems.ritualItem2 = "";
+  state.ritualItems.ritualItem3 = "";
+  state.ritualItems.ritualItem4 = "";
+  state.ritualItems.ritualItem5 = "";
   for (let i = 0; i < SUMMON_NAMES.length; i++) {
     let ritualDom = $(`#${SUMMON_NAMES[i]}`);
     ritualDom.html("");
@@ -722,6 +740,8 @@ const calculateBadEvidence = (evidence) => {
 };
 
 const determineConclusionMessage = (state) => {
+  _removeImpossibleItem(state);
+
   let displayEvidenceString = createEvidenceString(state.evidenceDisplay);
   let numOfDisplayTrueEvidence = numOfTrueEvidenceInString(displayEvidenceString);
 
@@ -873,14 +893,28 @@ const _setRitual = (ritual, state) => {
       let ritualDom = $(`#${SUMMON_NAMES[char-1]}`);
       ritualDom.html(camelCase(RITUAL_ITEMS[i]));
     } else if (char===0) {
-      Object.keys(userState.items).forEach((key, index) => {
+      Object.keys(state.items).forEach((key, index) => {
         if (key === RITUAL_ITEMS[i]) {
-          userState.items[key] = ITEM_IMPOSSIBLE;
+          state.itemsDisplay[key] = ITEM_IMPOSSIBLE;
         }
       });
-      updateItemsDOM(state.items);
     }
   }
+}
+
+const _removeImpossibleItem = (state) => {
+  Object.keys(state.itemsDisplay).forEach((key, index) => {
+    state.itemsDisplay[key] = state.items[key];
+  });
+}
+
+const _updateItemsDisplay = (state) => {
+  console.log(state.itemsDisplay);
+  Object.keys(state.itemsDisplay).forEach((key, index) => {
+    if (state.itemsDisplay[key] != ITEM_IMPOSSIBLE) {
+      state.itemsDisplay[key] = state.items[key];
+    }
+  });
 }
 
 const toggleHiddenRitual = (toggle, state) => {
@@ -914,7 +948,7 @@ const camelCase = (sentence) => {
 const updateDashboardDOM = (state) => {
   updateEvidenceDOM(state.evidenceDisplay);
   updateConclusion(state.conclusionString);
-  updateItemsDOM(state.items);
+  updateItemsDOM(state.itemsDisplay);
 };
 
 /** EVIDENCE RELATED DOM MANIPULATING FUNCTIONS */
