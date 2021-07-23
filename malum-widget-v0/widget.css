@@ -58,6 +58,30 @@
   align-self: flex-end;
 }
 
+/* ITEMS */
+.items-svg-container {
+  height: auto; 
+  margin: 0 {{itemsMarginSize}}px;
+}
+
+.items {
+  width: {{itemsPixelSize}}px;
+  height: {{itemsPixelSize}}px;
+  margin: auto auto;
+}
+
+.inactive2 {
+  fill: {{itemsInactive}};
+}
+
+.active2 {
+  fill: {{itemsActive}};
+}
+
+.impossible2 {
+  fill: {{itemsImpossible}};
+}
+
 /* CONCLUSION AND RITUAL */
 .conclusion {
   color: {{conclusionColor}};
