@@ -1,4 +1,4 @@
-const version = "0.2.0";
+const version = "0.3.0";
 
 /* Constants for Symbols and matching to Rituals
    Order is important here:
@@ -6,14 +6,14 @@ const version = "0.2.0";
    0 is false
    4 | 8 | Lobster | Scale | Dancer
 */
-const FIRE_SWORD = "11100",
-      ICE_AXE = "10110",
-      FROST_WHIP = "10101",
-      GIANT_MACE = "10011",
-      BONKING_STICK = "01110",
-      CLOBBER_HAMMER = "01101",
-      LONG_FINGER = "01011",
-      FLOWERS = "00111";
+const DRACO = "11100",
+      HYDRA = "10110",
+      PEGASUS = "10101",
+      URSA = "10011",
+      MONOCEROS = "01110",
+      CORVUS = "01101",
+      PHOENIX = "01011",
+      SCORPIUS = "00111";
 
 // Div IDs for Updating Symbols
 const EVIDENCE_NAMES = [
@@ -39,14 +39,14 @@ const EVIDENCE_OFF = 0,
    5 Bottom Right
    Book Crystal Egg Gold Potion Skull
 */
-const FIRE_SWORD_SOLN = "152403",
-      ICE_AXE_SOLN = "325104",
-      FROST_WHIP_SOLN = "453102",
-      GIANT_MACE_SOLN = "452103",
-      BONKING_STICK_SOLN = "453012",
-      CLOBBER_HAMMER_SOLN = "052143",
-      LONG_FINGER_SOLN = "543012",
-      FLOWERS_SOLN = "025143";
+const DRACO_SOLN = "152403",
+      HYDRA_SOLN = "325104",
+      PEGASUS_SOLN = "453102",
+      URSA_SOLN = "452103",
+      MONOCEROS_SOLN = "453012",
+      CORVUS_SOLN = "052143",
+      PHOENIX_SOLN = "543012",
+      SCORPIUS_SOLN = "025143";
 
 // Constants for displaying evidence on the widget
 const ITEM_OFF = 0,
@@ -309,76 +309,76 @@ window.addEventListener("onWidgetLoad", function (obj) {
   // Accurate as of 20Jul2021
   config.rituals = [
     { 
-      type: "Fire Sword",
+      type: "Draco",
       conclusion: createRitualConclusionString(
-        fieldData["fireSwordString"],
-        "Fire Sword"
+        fieldData["dracoString"],
+        "Draco"
       ),
-      evidence: FIRE_SWORD,
-      solution: FIRE_SWORD_SOLN,
+      evidence: DRACO,
+      solution: DRACO_SOLN,
     },
     { 
-      type: "Ice Axe",
+      type: "Hydra",
       conclusion: createRitualConclusionString(
-        fieldData["iceAxeString"],
-        "Ice Axe"
+        fieldData["hydraString"],
+        "Hydra"
       ),
-      evidence: ICE_AXE,
-      solution: ICE_AXE_SOLN,
+      evidence: HYDRA,
+      solution: HYDRA_SOLN,
     },
     { 
-      type: "Frost Whip",
+      type: "Pegasus",
       conclusion: createRitualConclusionString(
-        fieldData["frostWhipString"],
-        "Frost Whip"
+        fieldData["pegasusString"],
+        "Pegasus"
       ),
-      evidence: FROST_WHIP,
-      solution: FROST_WHIP_SOLN,
+      evidence: PEGASUS,
+      solution: PEGASUS_SOLN,
     },
     { 
-      type: "Giant Mace",
+      type: "Ursa",
       conclusion: createRitualConclusionString(
-        fieldData["giantMaceString"],
-        "Giant Mace"
+        fieldData["ursaString"],
+        "Ursa"
       ),
-      evidence: GIANT_MACE,
-      solution: GIANT_MACE_SOLN,
+      evidence: URSA,
+      solution: URSA_SOLN,
     },
     { 
-      type: "Bonking Stick",
+      type: "Monoceros",
       conclusion: createRitualConclusionString(
-        fieldData["bonkingStickString"],
-        "Bonking Stick"
+        fieldData["monocerosString"],
+        "Monoceros"
       ),
-      evidence: BONKING_STICK,
-      solution: BONKING_STICK_SOLN,
+      evidence: MONOCEROS,
+      solution: MONOCEROS_SOLN,
     },
     { 
-      type: "Clobber Hammer",
+      type: "Corvus",
       conclusion: createRitualConclusionString(
-        fieldData["clobberHammerString"],
-        "Clobber Hammer"
+        fieldData["corvusString"],
+        "Corvus"
       ),
-      evidence: CLOBBER_HAMMER,
-      solution: CLOBBER_HAMMER_SOLN,
+      evidence: CORVUS,
+      solution: CORVUS_SOLN,
     },
     { 
-      type: "Long Finger",
+      type: "Phoenix",
       conclusion: createRitualConclusionString(
-        fieldData["longFingerString"],
-        "Long Finger"
+        fieldData["phoenixString"],
+        "Phoenix"
       ),
-      evidence: LONG_FINGER,
-      solution: LONG_FINGER_SOLN,
+      evidence: PHOENIX,
+      solution: PHOENIX_SOLN,
     },
     { 
-      type: "Flowers",
+      type: "Scorpius",
       conclusion: createRitualConclusionString(
-        fieldData["flowersString"],
-        "Flowers"
+        fieldData["scorpiusString"],
+        "Scorpius"
       ),
-      evidence: FLOWERS,
-      solution: FLOWERS_SOLN,
+      evidence: SCORPIUS,
+      solution: SCORPIUS_SOLN,
     },
   ];
 
