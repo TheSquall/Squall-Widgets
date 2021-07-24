@@ -505,51 +505,51 @@
     "value": "",
     "group": "Conclusion Messages - Empty For Default"
   },
-  "fireSwordString": {
+  "hydraString": {
     "type": "text",
-    "label": "Fire Sword",
+    "label": "Hydra",
     "value": "",
     "group": "Conclusion Messages - Empty For Default"
   },
-  "iceAxeString": {
+  "dracoString": {
     "type": "text",
-    "label": "Ice Axe",
+    "label": "Draco",
     "value": "",
     "group": "Conclusion Messages - Empty For Default"
   },
-  "frostWhipString": {
+  "pegasusString": {
     "type": "text",
-    "label": "Frost Whip",
+    "label": "Pegasus",
     "value": "",
     "group": "Conclusion Messages - Empty For Default"
   },
-  "giantMaceString": {
+  "ursaString": {
     "type": "text",
-    "label": "Giant Mace",
+    "label": "Ursa",
     "value": "",
     "group": "Conclusion Messages - Empty For Default"
   },
-  "bonkingStickString": {
+  "monocerosString": {
     "type": "text",
-    "label": "Bonking Stick",
+    "label": "Monoceros",
     "value": "",
     "group": "Conclusion Messages - Empty For Default"
   },
-  "clobberHammerString": {
+  "corvusString": {
     "type": "text",
-    "label": "Clobber Hammer",
+    "label": "Corvus",
     "value": "",
     "group": "Conclusion Messages - Empty For Default"
   },
-  "longFingerString": {
+  "phoenixString": {
     "type": "text",
-    "label": "Long Finger",
+    "label": "Phoenix",
     "value": "",
     "group": "Conclusion Messages - Empty For Default"
   },
-  "flowersString": {
+  "scorpiusString": {
     "type": "text",
-    "label": "Flowers",
+    "label": "Scorpius",
     "value": "",
     "group": "Conclusion Messages - Empty For Default"
   },
