@@ -1,4 +1,4 @@
-# Welcome to the Malum BETA Widget version 0.1.0
+# Welcome to the Malum BETA Widget version 0.3.0
 
 I made this widget for anyone who uses StreamElements that plays Malum.
 This widget was created as a fork of GlitchedMythos's Phasmophobia Widget V3.0, which can be found [at this link](https://github.com/GlitchedMythos/se-widgets/tree/main/phasmophobia_evidence_v3).
