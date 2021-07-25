@@ -6,6 +6,7 @@ This widget was created as a fork of GlitchedMythos's Phasmophobia Widget V3.0, 
 I made this widget for anyone who uses StreamElements that plays Phasmophobia. To see how the widget works, please click the video below:
 
 To see how this widget works, as well as installation instructions and how to configure it, please click the video below.
+
 [![Installation and Use Video of Malum Widget](https://static-cdn.jtvnw.net/jtv_user_pictures/7e7b82c3-4d79-408e-8cfe-0b636625e41e-profile_image-70x70.png)](https://twitch.tv/the__squall)
 
 # Example Commands
