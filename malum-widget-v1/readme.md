@@ -7,7 +7,7 @@ I made this widget for anyone who uses StreamElements that plays Phasmophobia. T
 
 To see how this widget works, as well as installation instructions and how to configure it, please click the video below.
 
-[![Installation and Use Video of Malum Widget](https://static-cdn.jtvnw.net/jtv_user_pictures/7e7b82c3-4d79-408e-8cfe-0b636625e41e-profile_image-70x70.png)](https://twitch.tv/the__squall)
+[![Installation and Use Video of Malum Widget](http://img.youtube.com/vi/2xR7Ru-EcCY/0.jpg)](https://youtu.be/2xR7Ru-EcCY)
 
 # Example Commands
 
